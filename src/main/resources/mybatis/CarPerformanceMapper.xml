@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.rrr.dao.CarPerformanceMapper">
+
+    <resultMap type="com.rrr.model.CarPerformance" id="BaseResultMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="carServiceName" column="car_service_name" jdbcType="VARCHAR"/>
+        <result property="carIdxName" column="car_idx_name" jdbcType="VARCHAR"/>
+        <result property="carIdxValue" column="car_idx_value" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="getCarIndexNames" resultType="string">
+        SELECT DISTINCT
+            car_idx_name
+        FROM
+            car_performance;
+    </select>
+</mapper>

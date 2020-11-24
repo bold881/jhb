@@ -4,3 +4,7 @@ spring:
     username:
     password:
     url: jdbc:sqlite:sqlite/db.sqlite
+
+mybatis:
+  # mybatis xml配置路径
+  mapper-locations: classpath:mybatis/*.xml
