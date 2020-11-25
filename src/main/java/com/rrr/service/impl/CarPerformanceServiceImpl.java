@@ -20,7 +20,6 @@ public class CarPerformanceServiceImpl implements CarPerformanceService {
 
     @Override
     public List<String> getCarIndexNames() {
-        List<String> carIdxNames = carPerformanceMapper.getCarIndexNames();
-        return null;
+        return carPerformanceMapper.getCarIndexNames();
     }
 }
