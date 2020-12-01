@@ -1,6 +1,7 @@
 package com.rrr.service.impl;
 
 import com.rrr.dao.CarPerformanceMapper;
+import com.rrr.model.CarPerformance;
 import com.rrr.service.CarPerformanceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,10 @@ public class CarPerformanceServiceImpl implements CarPerformanceService {
     @Override
     public List<String> getCarIndexNames() {
         return carPerformanceMapper.getCarIndexNames();
+    }
+
+    @Override
+    public List<CarPerformance> addPerformanceIdx(String carIdxName, String carServiceName, String carIdxValue) {
+        return null;
     }
 }
