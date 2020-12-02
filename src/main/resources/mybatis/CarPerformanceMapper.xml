@@ -18,4 +18,43 @@
         FROM
             car_performance;
     </select>
+
+    <insert id="insert" parameterType="com.rrr.model.CarPerformance">
+        INSERT INTO car_performance (car_service_name, car_idx_name, car_idx_value, create_time)
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="carServiceName != null" >
+                #{carServiceName,jdbcType=VARCHAR},
+            </if>
+            <if test="carIdxName != null" >
+                #{carIdxName,jdbcType=VARCHAR},
+            </if>
+            <if test="carIdxValue != null" >
+                #{carIdxValue,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null" >
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="countByName" resultType="integer" parameterType="com.rrr.model.CarPerformance">
+        select count(*)
+        from car_performance
+        where car_service_name = #{carServiceName}
+        and car_idx_name = #{carIdxName}
+    </select>
+
+    <update id="update" parameterType="com.rrr.model.CarPerformance">
+        update car_performance
+        set car_idx_value = #{carIdxValue},
+        update_time = #{updateTime}
+        where car_service_name = #{carServiceName}
+        and car_idx_name = #{carIdxName}
+    </update>
+
+    <select id="getByIdxName" resultMap="BaseResultMap">
+        select id, car_service_name, car_idx_name, car_idx_value, create_time, update_time
+        from car_performance
+        where car_idx_name = #{carIdxName}
+    </select>
 </mapper>

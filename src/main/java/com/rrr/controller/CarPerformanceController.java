@@ -3,6 +3,7 @@ package com.rrr.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.rrr.common.CommonResult;
+import com.rrr.model.CarPerformance;
 import com.rrr.service.CarPerformanceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -40,6 +41,13 @@ public class CarPerformanceController {
         JSONObject body = JSON.parseObject(params);
         String carIdxName = body.getString("carIdxName");
         String carServiceName = body.getString("carServiceName");
-        String carIdxValue = body.getString("carIdxValue");
+        int carIdxValue = body.getIntValue("carIdxValue");
+
+        List<CarPerformance> carPerformances = carPerformanceService.addPerformanceIdx(
+                carIdxName,
+                carServiceName,
+                carIdxValue
+        );
+        return CommonResult.success(carPerformances);
     }
 }

@@ -22,5 +22,5 @@ public interface CarPerformanceService {
      * @param carIdxValue 指标值
      * @return
      */
-    List<CarPerformance> addPerformanceIdx(String carIdxName, String carServiceName, String carIdxValue);
+    List<CarPerformance> addPerformanceIdx(String carIdxName, String carServiceName, int carIdxValue);
 }

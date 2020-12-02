@@ -1,5 +1,6 @@
 package com.rrr.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.Date;
@@ -8,6 +9,7 @@ import java.util.Date;
  * @author daifeng
  */
 @Data
+@Builder
 public class CarPerformance {
     private Long id;
 
@@ -15,7 +17,7 @@ public class CarPerformance {
 
     private String carIdxName;
 
-    private String carIdxValue;
+    private Integer carIdxValue;
 
     private Date createTime;
 

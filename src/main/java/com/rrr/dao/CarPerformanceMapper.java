@@ -1,6 +1,8 @@
 package com.rrr.dao;
 
+import com.rrr.model.CarPerformance;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,4 +17,32 @@ public interface CarPerformanceMapper {
      * @return 指标名称列表，不重复
      */
     List<String> getCarIndexNames();
+
+    /**
+     * 插入一条记录
+     * @param carPerformance
+     * @return
+     */
+    int insert(CarPerformance carPerformance);
+
+    /**
+     * 查找是否存在同样的记录
+     * @param carPerformance
+     * @return
+     */
+    int countByName(CarPerformance carPerformance);
+
+    /**
+     * 更新记录
+     * @param carPerformance
+     * @return
+     */
+    int update(CarPerformance carPerformance);
+
+    /**
+     * 通过指标名称查询
+     * @param carIdxName
+     * @return
+     */
+    List<CarPerformance> getByIdxName(@Param("carIdxName") String carIdxName);
 }
