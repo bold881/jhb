@@ -1,4 +1,4 @@
-package com.rrr.controller;
+package com.rrr.auth.view;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;

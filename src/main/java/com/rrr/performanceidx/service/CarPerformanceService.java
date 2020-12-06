@@ -1,6 +1,6 @@
-package com.rrr.service;
+package com.rrr.performanceidx.service;
 
-import com.rrr.model.CarPerformance;
+import com.rrr.performanceidx.model.CarPerformance;
 
 import java.util.List;
 
@@ -23,4 +23,19 @@ public interface CarPerformanceService {
      * @return
      */
     List<CarPerformance> addPerformanceIdx(String carIdxName, String carServiceName, int carIdxValue);
+
+    /**
+     * 通过指标名称查询指标列表
+     * @param idxName
+     * @return
+     */
+    List<CarPerformance> getCarPerformanceByIdx(String idxName);
+
+    /**
+     * 通过主键ID删除记录
+     * @param id
+     * @param idxName
+     * @return
+     */
+    List<CarPerformance> deleteById(long id, String idxName);
 }

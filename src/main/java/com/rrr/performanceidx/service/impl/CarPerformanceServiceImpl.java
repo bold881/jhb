@@ -1,11 +1,12 @@
-package com.rrr.service.impl;
+package com.rrr.performanceidx.service.impl;
 
-import com.rrr.dao.CarPerformanceMapper;
-import com.rrr.model.CarPerformance;
-import com.rrr.service.CarPerformanceService;
+import com.rrr.performanceidx.dao.CarPerformanceMapper;
+import com.rrr.performanceidx.model.CarPerformance;
+import com.rrr.performanceidx.service.CarPerformanceService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import java.util.Date;
 import java.util.List;
@@ -45,4 +46,16 @@ public class CarPerformanceServiceImpl implements CarPerformanceService {
         return carPerformanceMapper.getByIdxName(carIdxName);
     }
 
+    @Override
+    public List<CarPerformance> getCarPerformanceByIdx(String idxName) {
+        Assert.hasLength(idxName, "指标名称不能为空");
+
+        return carPerformanceMapper.getByIdxName(idxName);
+    }
+
+    @Override
+    public List<CarPerformance> deleteById(long id, String idxName) {
+        carPerformanceMapper.delete(CarPerformance.builder().id(id).build());
+        return carPerformanceMapper.getByIdxName(idxName);
+    }
 }

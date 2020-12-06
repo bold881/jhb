@@ -1,10 +1,11 @@
-package com.rrr.controller;
+package com.rrr.performanceidx.view;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.rrr.common.CommonResult;
-import com.rrr.model.CarPerformance;
-import com.rrr.service.CarPerformanceService;
+import com.rrr.performanceidx.model.CarPerformance;
+import com.rrr.performanceidx.service.CarPerformanceService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 @CrossOrigin
+@Slf4j
 public class CarPerformanceController {
 
     @Autowired
@@ -49,5 +51,28 @@ public class CarPerformanceController {
                 carIdxValue
         );
         return CommonResult.success(carPerformances);
+    }
+
+    /**
+     * 通过指标名称查询性能指标
+     * @param params
+     * @return
+     */
+    @PostMapping("/getPerformancesByIdx")
+    public CommonResult getCarPerformanceByIdx(@RequestBody String params) {
+        JSONObject rawParams = JSON.parseObject(params);
+        String idxName = rawParams.getString("idxName");
+        List<CarPerformance> performances = carPerformanceService.getCarPerformanceByIdx(idxName);
+        return CommonResult.success(performances);
+    }
+
+    @PostMapping("/deleteById")
+    public CommonResult deleteById(@RequestBody String params) {
+        log.info(params);
+        JSONObject inObj = JSON.parseObject(params);
+        long id = inObj.getLong("id");
+        String idxName = inObj.getString("idxName");
+        List<CarPerformance> list = carPerformanceService.deleteById(id, idxName);
+        return CommonResult.success(list);
     }
 }

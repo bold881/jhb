@@ -1,6 +1,6 @@
-package com.rrr.dao;
+package com.rrr.performanceidx.dao;
 
-import com.rrr.model.CarPerformance;
+import com.rrr.performanceidx.model.CarPerformance;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -45,4 +45,11 @@ public interface CarPerformanceMapper {
      * @return
      */
     List<CarPerformance> getByIdxName(@Param("carIdxName") String carIdxName);
+
+    /**
+     * 通过主键Id删除记录
+     * @param carPerformance
+     * @return
+     */
+    int delete(CarPerformance carPerformance);
 }

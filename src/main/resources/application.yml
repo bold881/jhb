@@ -8,3 +8,11 @@ spring:
 mybatis:
   # mybatis xml配置路径
   mapper-locations: classpath:mybatis/*.xml
+
+# 日志级别
+logging:
+  level:
+    com:
+      rrr:
+        performanceidx:
+          dao: debug

@@ -1,4 +1,4 @@
-package com.rrr.controller;
+package com.rrr.auth.view;
 
 
 import com.alibaba.fastjson.JSON;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 
     private static final String USER_NAME = "admin";
-//    private static final String PSWD = "!qaz@wsx";
     private static final String PSWD = "111111";
     private static final String ERR_MSG = "用户名或密码不正确";
 

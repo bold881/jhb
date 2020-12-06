@@ -1,4 +1,4 @@
-package com.rrr.model;
+package com.rrr.performanceidx.model;
 
 import lombok.Builder;
 import lombok.Data;
